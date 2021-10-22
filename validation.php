@@ -39,12 +39,12 @@ if($num3==1)
 if($num1||$num2||$num3)
 {
     $_SESSION['try']=1;
-    header('location:http://localhost/SE-Project/home.php?');
+    header('location:http://localhost/se%20project/pharmacy_management.github.io/home.php');
 }
 else
 {
     $_SESSION['try']=2;
-	header('location:http://localhost/SE-Project/login.php?');
+	header('location:http://localhost/se%20project/pharmacy_management.github.io/login.php');
 }
 mysqli_close($con);
 ?>
