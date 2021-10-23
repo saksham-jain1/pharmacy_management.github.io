@@ -116,6 +116,9 @@ session_start();
         </div>
         <button type="reset" class="btn btn-warning">Reset</button>&emsp;&emsp;
         <button type="submit" class="btn btn-primary">Sign in</button>
+        <br>
+        <br>
+        <a href="addnew.php" style="float:right;"><i class="fas fa-user-plus"> &nbsp;Create Account</i></a>
       </form>
       </center>
 </body>
