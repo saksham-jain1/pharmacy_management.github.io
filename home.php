@@ -11,7 +11,7 @@ session_start();
     <link href="bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="fontawesome-free-5.15.3-web\css\all.css" rel="stylesheet">
   </head>
-<body  onload="setTimeout(fade,2000)" class="bg-light"> 
+<body  onload="setTimeout(fade,3000)" class="bg-light"> 
   <script src="bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
   <script>
     function fade()
