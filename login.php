@@ -118,7 +118,7 @@ session_start();
         <button type="submit" class="btn btn-primary">Sign in</button>
         <br>
         <br>
-        <a href="fogot.php" style="float:Left;"><i class="fas">Forgot Password</i></a>
+        <a href="forgot.php" style="float:Left;"><i class="fas">Forgot Password</i></a>
         <a href="addnew.php" style="float:right;"><i class="fas fa-user-plus"> &nbsp;Create Account</i></a>
       </form>
       </center>

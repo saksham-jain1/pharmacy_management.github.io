@@ -2,8 +2,8 @@
 session_start();
 include('smtp/PHPMailerAutoload.php');
 function smtp_mailer($to,$subject, $msg){
-    echo '<div hidden>';
-	$mail = new PHPMailer(); 
+    echo '<div id="mail" hidden>';
+	$mail = new PHPMailer();
 	$mail->SMTPDebug  = 3;
 	$mail->IsSMTP(); 
 	$mail->SMTPAuth = true; 
@@ -77,8 +77,14 @@ echo smtp_mailer($_SESSION['email'],'OTP',$html);
       }
     </style>
   </head>
-<body class="bg-light">  
+<body class="bg-light" onload="setTimeout(delete1,10)">  
   <script src="bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script>
+    function delete1()
+    {
+      document.getElementById("mail").innerHTML=" ";
+    }
+  </script>
     <center>
       <div class="blur">
         <h3>E-Mail Verification</h3>
