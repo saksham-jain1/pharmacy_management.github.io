@@ -1,6 +1,5 @@
 <?php
-session_start();
-?>
+session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,16 +85,11 @@ session_start();
     </div>
   </nav>
     <center>
-      <?php
-      if(isset($_SESSION["try"]) && $_SESSION['try']==2)
-      {
-        ?>
+      <?php if (isset($_SESSION['try']) && $_SESSION['try'] == 2) { ?>
       <div class="alert-danger px-4 py-2" style="position: relative; top: 70px;width: fit-content;">
         <h6><i class="fa fa-times"></i> invalid user id or password</h6>
       </div>
-      <?php
-      }
-      ?>
+      <?php } ?>
       <div class="blur">
         <form method="POST" action="validation.php" class="bg-transparent pb-0">
         <h3>Sign In</h3>
