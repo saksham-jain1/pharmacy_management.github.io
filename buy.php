@@ -101,7 +101,7 @@ hello
         </div>
         <h4>Price per piece</h4>
         <div id="price">
-          hrllo
+          hello
         </div>
         <h4>Instructions</h4>
         <div id="instructions">
