@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buy</title>
+    <title>Stocks</title>
     <link href="bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link href="fontawesome-free-5.15.3-web\css\all.css" rel="stylesheet">
     <style>
@@ -21,24 +21,10 @@ session_start();
 <body>
     <script src="bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
-      function decrement()
-      {
-        if(document.getElementById('quantity').value>0)
+        function hello()
         {
-          document.getElementById('quantity').value-=1;
+            alert("hello");
         }
-      }
-      function increment()
-      {
-        if(document.getElementById('quantity').value<10)
-        {
-          document.getElementById('quantity').value++;
-        }
-      }
-      function placeorder()
-      {
-        
-      }
     </script>
     <nav class="navbar navbar-dark bg-dark fixed-top">
     <div class="container-fluid">
@@ -73,52 +59,42 @@ session_start();
       </div>
     </div>
   </nav>
-    <center>
-        <div class="p-2 bg-info sticky-top my-5">
-            <h2>Medicine Name</h2>
+  <center>
+  <div class="p-2 bg-info sticky-top my-5">
+            <h2>Stocks</h2>
         </div>
-        <table class="col-8 shadow-lg" style="border-radius:5px">
-          <tr>
-            <td>
-              <img src="pharma.jpg" height="400px" width="100%" alt="" srcset="">
-            </td>
-          </tr>
-          <tr>
-            <td>
-            <div class="col-3" style="float:right">
-        <div class="input-group p-2">
-          <h5>Quantity: &nbsp;&nbsp;&nbsp;</h5>
-          <span class="input-group-text fas fa-minus" onclick="decrement()"></span>
-            <input type="number" class="form-control" min="0" max="10" value="0" id="quantity" disabled>
-          <span class="input-group-text fas fa-plus" onclick="increment()"></span>
-        </div>
-        </div>
-        <br>
-        <br>
-        <h4>Discription</h4>
-        <div id="description">
+        <div class="col-9 shodow-lg mt-3">
+<table class="table table-striped shadow-lg" style="border-radius:15px">
+    <thead class="">
+    <tr>
+        <th>Batch No</th>
+        <th>(Id) Name</th>
+        <th>Company</th>
+        <th>Price</th>
+        <th>Expiery Date</th>
+        <th>Quantity</th>
+        <th></th>
+    </tr>
+    </thead> 
+    <?php
+    for($i=0;$i<80;$i++)
+        {
+            ?>
+            <tr>
+            <td>Batch No</td>
+            <td>(Id) Name</td>
+            <td>Company</td>
+            <td>Price</td>
+            <td>Expiery Date</td>
+            <td>Quantity</td>
+            <td class="p-0"><button class="btn btn-success m-0 py-2" onclick="hello()" style="width:100%">Update Details</button></td>
+            </tr>
+<?php
+        }
+        ?>
+</table>
 
-        </div>
-        <h4>Used For</h4>
-        <div id="role">
-
-        </div>
-        <h4>Price per piece</h4>
-        <div id="price">
-          
-        </div>
-        <h4>Instructions</h4>
-        <div id="instructions">
-          
-        </div>
-     <div class="input-group">
-        <input type="text" class="form-control bg-warning" placeholder="Total :  ₹500/-" id="basic-url" aria-describedby="basic-addon3" disabled>
-        <span class="input-group-text col-5 justify-content-center btn btn-warning" id="" onclick="placeorder()">Place Order</span>
-      </div>
-            </td>
-          </tr>
-        </table>
-    </center>
-
+</div>
+</center>
 </body>
 </html>
