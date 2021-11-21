@@ -33,29 +33,53 @@ session_start();
             <div class="offcanvas-body bg-dark">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
-                  <a class="nav-link active" href="home.php"><i class="fas fa-home"></i>&nbsp;Home</a>
+                  <a class="nav-link active" href="home.php"><i class="fas fa-home">&nbsp;Home</i></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="about.php"><i class="fas fa-sign-out-alt"></i>About Us</a>
+                  <a class="nav-link" href="about.php"><i class="fas fa-info-circle">&nbsp;About Us</i></a>
                 </li>
                 <?php
                 if(isset($_SESSION["id"]))
                   {
                 ?>
                 <li class="nav-item">
-                  <a class="nav-link" href="login.php"><i class="fas fa-sign-out-alt"></i>&nbsp;NEW</a>
+                  <a class="nav-link" href="order.php"><i class="fas fa-shopping-bag">&nbsp;My Orders</i></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="orders.php"><i class="fas fa-bags-shopping"></i>&nbsp;Orders</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="cart.php"><i class="fas fa-shopping-cart"></i>&nbsp;Cart</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
+                  <a class="nav-link" href="medicine.php"><All class="fas fa-prescription-bottle-alt">&nbsp;All Medicine</i></a>
                 </li>
                 <?php
-                  }
+                if($_SESSION['role']=='seller')
+                {
+                ?>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user-cog">&nbsp;Seller's Panel</i></a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown06">
+                      <li><a class="dropdown-item" href="stocks.php"><i class="fas fa-cubes">&nbsp;Stocks</i></a></li>
+                    </ul>
+                  </li>
+                  <?php
+                }
+                if($_SESSION['role']=='admin')
+                {
+                  ?>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fas fa-user-cog">&nbsp;Admin's Panel</i></a>
+                      <ul class="dropdown-menu" aria-labelledby="dropdown06">
+                        <li><a class="dropdown-item" href="stocks.php"><i class="fas fa-cubes">&nbsp;Stocks</i></a></li><hr>
+                        <li><a class="dropdown-item" href="allOrders.php"><i class="fas fa-clipboard-list">&nbsp;All orders</i></a></li><hr>
+                        <li><a class="dropdown-item" href="users.php"><i class="fas fa-users">&nbsp;Users</i></a></li>
+                        <li><a class="dropdown-item" href="seller.php"><i class="fas fa-users-cog">&nbsp;Sellers</i></a></li>
+                      </ul>
+                    </li>
+                  <?php
+                }
+                ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="logout.php"><i class="fas fa-sign-out-alt">&nbsp;Logout</i></a>
+                </li>
+                <?php
+              }
                   else
                   {
                 ?>
@@ -65,6 +89,7 @@ session_start();
                 <?php
                   }
                 ?>
+                <hr class="bg-light">
                 <li>
                   <form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -76,7 +101,6 @@ session_start();
           </div>
         </div>
       </nav>
-    <center>
     <center>
     <div class="alert-success px-4 py-2" id="fade" style="position: relative; top: 70px;width: fit-content;z-index:1;visibility:<?php
       if(isset($_SESSION["try"]) && $_SESSION['try']==1)

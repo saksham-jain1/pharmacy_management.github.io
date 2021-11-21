@@ -5,4 +5,5 @@ send mail notification of order and some other things,
 admin panel or seller panel drop down,
 extra discount for seller,
 connect all the pages,
+restrictions in pages,
 polish the project;
