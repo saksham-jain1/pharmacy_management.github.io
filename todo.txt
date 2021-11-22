@@ -1,9 +1,7 @@
-change navbar content of all pages make it dynamic,
 connect to database,
 insert data in database,
 send mail notification of order and some other things,
-admin panel or seller panel drop down,
 extra discount for seller,
 connect all the pages,
 restrictions in pages,
-polish the project;
+polish the project:-navbar,;

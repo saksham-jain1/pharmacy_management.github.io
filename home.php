@@ -1,5 +1,6 @@
 <?php
 session_start();
+$med_id="";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +30,7 @@ session_start();
             <div class="offcanvas-header bg-info">
               <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
               <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
+            </div> 
             <div class="offcanvas-body bg-dark">
               <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li class="nav-item">
@@ -68,7 +69,7 @@ session_start();
                       <ul class="dropdown-menu" aria-labelledby="dropdown06">
                         <li><a class="dropdown-item" href="stocks.php"><i class="fas fa-cubes">&nbsp;Stocks</i></a></li><hr>
                         <li><a class="dropdown-item" href="allOrders.php"><i class="fas fa-clipboard-list">&nbsp;All orders</i></a></li><hr>
-                        <li><a class="dropdown-item" href="users.php"><i class="fas fa-users">&nbsp;Users</i></a></li>
+                        <li><a class="dropdown-item" href="users.php"><i class="fas fa-users">&nbsp;Users</i></a></li><hr>
                         <li><a class="dropdown-item" href="seller.php"><i class="fas fa-users-cog">&nbsp;Sellers</i></a></li>
                       </ul>
                     </li>
@@ -141,110 +142,27 @@ session_start();
     <h3>Medicines</h3>
 <table style="width:100%;display:block;overflow-x:auto">
   <tr>
+    <?php
+    for($i=1;$i<=10;$i++)
+    {
+      ?>
     <td>
     <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src="<?php echo $med_id; ?>.jpeg" class="card-img-top" alt="hello">
   <div class="card-body">
-    <h5 class="card-title">Medicine 1</h5>
+    <h5 class="card-title">Medicine <?php echo $i; ?></h5>
     <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
+    <a href="buy.php?med_id=<?php echo $med_id; ?>" class="btn btn-primary">Buy</a>
   </div>
 </div>
     </td>
-    <td>
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Medicine 2</h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
-  </div>
-</div>
-    </td>
-    <td>
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Medicine 3</h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
-  </div>
-</div>
-    </td>
-    <td>
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Medicine 4</h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
-  </div>
-</div>
-    </td>
-    <td>
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Medicine 5</h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
-  </div>
-</div>
-    </td>
-    <td>
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Medicine 6</h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
-  </div>
-</div>
-    </td>
-    <td>
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Medicine 7</h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
-  </div>
-</div>
-    </td>
-    <td>
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Medicine 8</h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
-  </div>
-</div>
-    </td>
-    <td>
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Medicine 9</h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
-  </div>
-</div>
-    </td>
-    <td>
-    <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Medicine 10</h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Buy</a>
-  </div>
-</div>
-    </td>
+    <?php
+    }
+    ?>
   </tr>
 </table>
-<div class="row mt-5">
-  <div class="col-sm-6">
+<div class="row mt-5 justify-content-around">
+  <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Book Appointment For Online Consltancy</h5>
@@ -253,7 +171,7 @@ session_start();
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Book Appointment For Offline Consltancy</h5>
@@ -263,22 +181,22 @@ session_start();
     </div>
   </div>
 </div>
-<div class="row mt-5">
-  <div class="col-sm-6">
+<div class="row mt-5 justify-content-around">
+  <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Get 25% OFF on Selected Medicine</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Buy</a>
+        <a href="medicine.php?discount=25" class="btn btn-primary">Buy</a>
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-sm-5">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">Get 10% OFF on all Medicines</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Buy</a>
+        <a href="medicine.php?discount=10" class="btn btn-primary">Buy</a>
       </div>
     </div>
   </div>
