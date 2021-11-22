@@ -1,6 +1,9 @@
 <?php
 session_start();
-$med_id="";
+$con=mysqli_connect('localhost','root','root');
+mysqli_select_db($con,'pharmacy_management');
+$q="select * from medicine;";
+$medicine_list=mysqli_query($con,$q);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -145,14 +148,15 @@ $med_id="";
     <?php
     for($i=1;$i<=10;$i++)
     {
+      $medicine=mysqli_fetch_array($medicine_list);
       ?>
     <td>
     <div class="card" style="width: 18rem;">
-  <img src="<?php echo $med_id; ?>.jpeg" class="card-img-top" alt="hello">
+  <img src="<?php echo $medicine['id'] ?>.jpeg" class="card-img-top" alt="hello">
   <div class="card-body">
-    <h5 class="card-title">Medicine <?php echo $i; ?></h5>
+    <h5 class="card-title"><?php echo $medicine['name']; ?></h5>
     <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
-    <a href="buy.php?med_id=<?php echo $med_id; ?>" class="btn btn-primary">Buy</a>
+    <a href="buy.php?med_id=<?php echo $medicine['id']; ?>" class="btn btn-primary">Buy</a>
   </div>
 </div>
     </td>

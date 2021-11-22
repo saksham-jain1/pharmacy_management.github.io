@@ -1,5 +1,12 @@
 <?php
 session_start();
+$price=100;
+$con=mysqli_connect('localhost','root','root');
+mysqli_select_db($con,'pharmacy_management');
+$q="select * from medicine where id = '$_GET[med_id]';";
+$medicine_detail_list=mysqli_query($con,$q);
+$medicine=mysqli_fetch_array($medicine_detail_list);
+$quantity=10;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,18 +33,23 @@ session_start();
         if(document.getElementById('quantity').value>0)
         {
           document.getElementById('quantity').value-=1;
+          document.getElementById('basic-url').placeholder="Total :  "+<?php echo $price; ?>*document.getElementById('quantity').value;
+
         }
       }
       function increment()
       {
-        if(document.getElementById('quantity').value<10)
+        var quantity=<?php echo $quantity; ?>;
+        if(document.getElementById('quantity').value<10 && document.getElementById('quantity').value<quantity)
         {
           document.getElementById('quantity').value++;
+          document.getElementById('basic-url').placeholder="Total :  "+<?php echo $price; ?>*document.getElementById('quantity').value;
         }
       }
       function placeorder()
       {
-        
+        var quantity=document.getElementById('quantity').value;
+        window.location ="http://localhost/se%20project/pharmacy_management.github.io/placeorder.php?med_id=<?php echo$medicine['id']; ?>&quantity="+quantity;
       }
     </script>
         <nav class="navbar navbar-dark bg-dark fixed-top">
@@ -144,25 +156,19 @@ session_start();
         </div>
         <br>
         <br>
-        <h4>Discription</h4>
-        <div id="description">
-
-        </div>
+        <h4>Salts</h4>
+        <P><?php echo $medicine['discription']; ?></P>
         <h4>Used For</h4>
-        <div id="role">
-
-        </div>
+        <P><?php echo $medicine['role']; ?></P>
         <h4>Price per piece</h4>
-        <div id="price">
-          
-        </div>
+        <P><?php echo $price; ?></P>
         <h4>Instructions</h4>
-        <div id="instructions">
-          
-        </div>
+        <P><?php echo $medicine['how_to_use']; ?></P>
+        <h4>Side Effects</h4>
+        <P><?php echo $medicine['side_effects']; ?></P>
      <div class="input-group">
-        <input type="text" class="form-control bg-warning" placeholder="Total :  ₹500/-" id="basic-url" aria-describedby="basic-addon3" disabled>
-        <span class="input-group-text col-5 justify-content-center btn btn-warning" id="" onclick="placeorder()">Place Order</span>
+        <input type="text" class="form-control bg-warning" placeholder="Total :  0" id="basic-url" aria-describedby="basic-addon3" disabled>
+        <span class="input-group-text col-5 justify-content-center btn btn-success  " onclick="placeorder()">Place Order</span>
       </div>
             </td>
           </tr>

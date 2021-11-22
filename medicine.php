@@ -1,5 +1,18 @@
 <?php
 session_start();
+$con=mysqli_connect('localhost','root','root');
+mysqli_select_db($con,'pharmacy_management');
+if(isset($_GET['discount']))
+{
+  $q="select * from medicine where offer = '$_GET[discount]';";
+}
+else
+{
+  $q="select * from medicine;";
+}
+
+$medicine_list=mysqli_query($con,$q);
+$n=mysqli_num_rows($medicine_list);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -101,19 +114,20 @@ session_start();
         </div>
 <div class="row row-cols-1 row-cols-md-5 g-5 m-2 p-2">
 <?php
-for($i=0;$i<12;$i++)
+for($i=0;$i<$n;$i++)
 {
+  $medicine=mysqli_fetch_array($medicine_list);
     ?>
 <div class="col">
     <div class="card">
-      <img src="..." class="card-img-top" alt="...">
+      <img src="<?php echo $medicine['id'] ?>.jpeg" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <h5 class="card-title"><?php echo $medicine['name']; ?></h5>
+        <p class="card-text">Company: <?php echo $medicine['company']; ?> <br>Salts: <?php echo $medicine['discription']; ?><br>Price: </p>
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-circle bg-danger">
-            10% OFF
+        <?php echo $medicine['offer']; ?>% OFF
         </span>
-        <a href="#" class="btn btn-primary">Buy</a>
+        <a href="buy.php?med_id=<?php echo $medicine['id']; ?>" class="btn btn-primary">Buy</a>
       </div>
     </div>
 </div>

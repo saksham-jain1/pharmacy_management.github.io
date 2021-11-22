@@ -1,5 +1,10 @@
 <?php
 session_start();
+$con=mysqli_connect('localhost','root','root');
+mysqli_select_db($con,'pharmacy_management');
+$q="select * from user_orders_medicines where user_id = '$_SESSION[id]';";
+$order_list=mysqli_query($con,$q);
+$n=mysqli_num_rows($order_list);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -100,8 +105,9 @@ session_start();
             <h2>Your Ordes</h2>
         </div>
         <?php
-        for($i=0;$i<10;$i++)
+        for($i=0;$i<$n;$i++)
         {
+          $order=mysqli_fetch_array($order_list);
             ?>
         <table class="col-8 shadow-lg mt-2" style="border-radius:10px;">
             <tr>
@@ -109,7 +115,9 @@ session_start();
                     <img src="pharma.jpg" height="150px" width="150px" alt="" srcset="">
                 </td>
                 <td class="col-6">
-                    
+                    order id: <?php echo $order['order_id']; ?><br>
+                    quantity: <?php echo $order['quantity']; ?>
+
                 </td>
             </tr>
         </table>
