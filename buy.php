@@ -136,12 +136,12 @@ $quantity=10;
       </nav>
     <center>
         <div class="p-2 bg-info sticky-top my-5">
-            <h2>Medicine Name</h2>
+            <h2><?php echo $medicine['name']; ?>.jpg</h2>
         </div>
         <table class="col-8 shadow-lg" style="border-radius:5px">
           <tr>
             <td>
-              <img src="pharma.jpg" height="400px" width="100%" alt="" srcset="">
+              <img src="<?php echo $medicine['id']%10; ?>.jpg" height="400px" width="100%" alt="" srcset="">
             </td>
           </tr>
           <tr>

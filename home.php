@@ -152,10 +152,10 @@ $medicine_list=mysqli_query($con,$q);
       ?>
     <td>
     <div class="card" style="width: 18rem;">
-  <img src="<?php echo $medicine['id'] ?>.jpeg" class="card-img-top" alt="hello">
+  <img src="<?php echo $medicine['id'] ?>.jpg" class="card-img-top" alt="hello">
   <div class="card-body">
     <h5 class="card-title"><?php echo $medicine['name']; ?></h5>
-    <p class="card-text">Some quick example text to build on the Medicine and make up the bulk of the card's content.</p>
+    <p class="card-text"><b><?php echo $medicine['company'];?> <br>Salt:</b>  <?php echo $medicine['discription'];?></p>
     <a href="buy.php?med_id=<?php echo $medicine['id']; ?>" class="btn btn-primary">Buy</a>
   </div>
 </div>

@@ -120,7 +120,7 @@ for($i=0;$i<$n;$i++)
     ?>
 <div class="col">
     <div class="card">
-      <img src="<?php echo $medicine['id'] ?>.jpeg" class="card-img-top" alt="...">
+      <img src="<?php echo $medicine['id']%10; ?>.jpg" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title"><?php echo $medicine['name']; ?></h5>
         <p class="card-text">Company: <?php echo $medicine['company']; ?> <br>Salts: <?php echo $medicine['discription']; ?><br>Price: </p>
