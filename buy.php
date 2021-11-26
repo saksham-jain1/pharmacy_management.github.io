@@ -1,12 +1,18 @@
 <?php
 session_start();
-$price=100;
 $con=mysqli_connect('localhost','root','root');
 mysqli_select_db($con,'pharmacy_management');
 $q="select * from medicine where id = '$_GET[med_id]';";
+$q1="select * from stocks where id = '$_GET[med_id]' order by exp_date;";
+$q2="select sum(no_of_medicine) as 'quantity' from stocks where id = '$_GET[med_id]';";
 $medicine_detail_list=mysqli_query($con,$q);
+$medicine_price=mysqli_query($con,$q1);
+$medicine_quantity=mysqli_query($con,$q2);
 $medicine=mysqli_fetch_array($medicine_detail_list);
-$quantity=10;
+$medicine1=mysqli_fetch_array($medicine_price);
+$medicine2=mysqli_fetch_array($medicine_quantity);
+$price=$medicine1['price'];
+$quantity=$medicine2['quantity'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

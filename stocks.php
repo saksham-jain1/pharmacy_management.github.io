@@ -1,5 +1,10 @@
 <?php
 session_start();
+$con=mysqli_connect('localhost','root','root');
+mysqli_select_db($con,'pharmacy_management');
+$q="select * from stocks;";
+$medicine_list=mysqli_query($con,$q);
+$n=mysqli_num_rows($medicine_list);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +26,32 @@ session_start();
 <body>
     <script src="bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
-        function hello()
+        function make_editable(id)
         {
-            alert("hello");
+          var cls="id"+id;
+          var cells = document.getElementsByClassName(cls);
+          cells[0].contentEditable='true';
+          cells[1].contentEditable='true';
+          cells[2].contentEditable='true';
+          cells[4].style.visibility="visible";
+          cells[0].parentNode.style.backgroundColor = "yellow";
+          cells[3].style.visibility="hidden";
+          window.location ="http://localhost/se%20project/pharmacy_management.github.io/updatestocks.php?batch_id="+id+"&quantity="+quan+"&exp="+exp+"&price="+price;
+        }
+        function update_stocks(id)
+        {
+          var cls="id"+id;
+          var cells = document.getElementsByClassName(cls);
+          cells[0].contentEditable='false';
+          cells[1].contentEditable='false';
+          cells[2].contentEditable='false';
+          cells[4].style.visibility="hidden";
+          cells[0].parentNode.style.backgroundColor = "";
+          cells[3].style.visibility="visible";
+          var quan=cells[2].innerHTML;
+          var exp=cells[1].innerHTML;
+          var price=cells[0].innerHTML;
+          window.location ="http://localhost/se%20project/pharmacy_management.github.io/updatestocks.php?batch_id="+id+"&quantity="+quan+"&exp="+exp+"&price="+price;
         }
     </script>
     <nav class="navbar navbar-dark bg-dark fixed-top">
@@ -116,27 +144,33 @@ session_start();
 <table class="table table-striped shadow-lg" style="border-radius:15px">
     <thead class="">
     <tr>
-        <th>Batch No</th>
+        <th class="id">Batch No</th>
         <th>(Id) Name</th>
         <th>Company</th>
-        <th>Price</th>
-        <th>Expiery Date</th>
-        <th>Quantity</th>
-        <th></th>
+        <th class="">Price</th>
+        <th class="">Expiery Date</th>
+        <th class="">Quantity</th>
+        <th class=""></th>
     </tr>
     </thead> 
     <?php
-    for($i=0;$i<80;$i++)
-        {
+    for($i=0;$i<$n;$i++)
+    {
+      $medicine=mysqli_fetch_array($medicine_list);
+      $q="select * from medicine where id = '$medicine[id]';";
+      $medicine_=mysqli_query($con,$q);
+      $medicine_n=mysqli_fetch_array($medicine_);
             ?>
             <tr>
-            <td>Batch No</td>
-            <td>(Id) Name</td>
-            <td>Company</td>
-            <td>Price</td>
-            <td>Expiery Date</td>
-            <td>Quantity</td>
-            <td class="p-0"><button class="btn btn-success m-0 py-2" onclick="hello()" style="width:100%">Update Details</button></td>
+            <td><?php echo $medicine['batch_no']; ?></td>
+            <td>(<?php echo $medicine['id']; ?>) <?php echo $medicine_n['name']; ?></td>
+            <td><?php echo $medicine_n['company']; ?></td>
+            <td class="id<?php echo $medicine['batch_no']; ?>" contenteditable='false'><?php echo $medicine['price']; ?></td>
+            <td class="id<?php echo $medicine['batch_no']; ?>"><?php echo $medicine['exp_date']; ?></td>
+            <td class="id<?php echo $medicine['batch_no']; ?>"><?php echo $medicine['no_of_medicine']; ?></td>
+            <td class="p-0"><button class="btn btn-success m-0 py-2 id<?php echo $medicine['batch_no']; ?>" onclick="make_editable(<?php echo $medicine['batch_no']; ?>)" style="width:100%">Update Details</button>
+            <button class="btn btn-success m-0 py-2 id<?php echo $medicine['batch_no']; ?>" onclick="update_stocks(<?php echo $medicine['batch_no']; ?>)" style="width:100%;visibility:hidden">Done</button>
+            </td>
             </tr>
 <?php
         }

@@ -1,7 +1,3 @@
-connect to database,
-insert data in database,
+add seller to admin,add new stocks to seller and admin
 send mail notification of order and some other things,
-extra discount for seller,
-connect all the pages,
-restrictions in pages,
 polish the project:-navbar,;
